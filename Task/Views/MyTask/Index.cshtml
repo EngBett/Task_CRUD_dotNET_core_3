@@ -1,0 +1,26 @@
+@model IEnumerable<MyTask>
+<h1>Tasks</h1>
+<a asp-controller="MyTask" asp-action="Create">Add task</a>
+
+<br/><br/>
+<table>
+    <tr>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Edit</th>
+        <th>Delete</th>
+    </tr>
+    @foreach (var task in @Model)
+    {
+        <tr>
+            <td>@task.Name</td>
+            <td>@task.Description</td>
+            <td>
+                <a asp-controller="MyTask" asp-action="Edit" asp-route-id="@task.MyTaskId">Edit</a>
+            </td>
+            <td>
+                <a asp-controller="MyTask" asp-action="Delete" asp-route-id="@task.MyTaskId">Delete</a>
+            </td>
+        </tr>
+    }
+</table>
